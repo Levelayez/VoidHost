@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Embed</title>
+    <title>Embedded Link Preview</title>
     <style>
         body {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
@@ -14,51 +14,55 @@
             background-size: cover;
             font-family: Arial, sans-serif;
         }
-
-        .video-container {
+        
+        .link-preview {
             display: flex;
-            justify-content: center;
             align-items: center;
-            flex-grow: 1;
-            width: 80%;
-            max-width: 800px;
-            margin: 0 auto;
+            justify-content: flex-start;
+            max-width: 600px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
         }
         
-        .video-container video {
-            width: 100%;
-            height: auto;
+        .link-preview img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
         }
         
-        .embed-link {
-            margin-top: 20px;
-            font-size: 24px;
-            color: #fff;
+        .link-preview-content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .link-preview-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .link-preview-description {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .link-preview-link {
+            font-size: 14px;
+            color: #007bff;
             text-decoration: none;
         }
     </style>
-    <script>
-        function generateEmbedLink() {
-            const videoUrl = 'video/Video.mp4';
-            const embedLink = `[![Click to Play Video](https://i.imgur.com/VIDEO_THUMBNAIL_IMAGE.png)](${videoUrl})`;
-            const embedTextArea = document.getElementById('embedCode');
-            embedTextArea.value = embedLink;
-            embedTextArea.style.display = 'block';
-            embedTextArea.select();
-            document.execCommand('copy');
-            embedTextArea.style.display = 'none';
-            alert('Embed link copied to clipboard!');
-        }
-    </script>
 </head>
 <body>
-    <div class="video-container">
-        <video controls>
-            <source src="video/Video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <div class="link-preview">
+        <img src="your_image_url" alt="Preview Image">
+        <div class="link-preview-content">
+            <div class="link-preview-title">Title of the Link</div>
+            <div class="link-preview-description">Description of the link</div>
+            <a href="your_link_url" class="link-preview-link">View More</a>
+        </div>
     </div>
-    <a href="#" class="embed-link" onclick="generateEmbedLink()">Generate Embed Link</a>
-    <textarea id="embedCode" style="display: none;"></textarea>
 </body>
 </html>
