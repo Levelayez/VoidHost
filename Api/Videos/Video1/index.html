@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Player</title>
+    <title>Video Player with Discord Embed</title>
     <style>
         body {
             display: flex;
@@ -41,12 +41,18 @@
             border-radius: 5px;
             text-decoration: none;
         }
+        
+        .discord-embed {
+            width: 80%;
+            max-width: 800px;
+            height: 300px;
+            margin-top: 20px;
+        }
+        
         .discord-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
+            border: none;
         }
     </style>
 </head>
@@ -58,6 +64,9 @@
         </video>
     </div>
     <a href="video/Video.mp4" class="download-button" download>Download</a>
+    <div class="discord-embed">
+        <iframe src="https://discord.com/widget" allowtransparency="true" frameborder="0"></iframe>
+    </div>
     <script>
         const downloadButton = document.querySelector('.download-button');
         const videoUrl = 'video/Video.mp4';
@@ -75,8 +84,5 @@
             anchorElement.click();
         }
     </script>
-    <div class="discord-embed">
-        <iframe src="https://discord.com/widget" allowtransparency="true" frameborder="0" width="400" height="300"></iframe>
-    </div>
 </body>
 </html>
