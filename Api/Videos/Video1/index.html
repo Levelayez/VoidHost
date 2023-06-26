@@ -37,6 +37,18 @@
             text-decoration: none;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.embed-link').click(function(e) {
+                e.preventDefault();
+                const videoUrl = 'video/Video.mp4';
+                const embedLink = `<iframe src="https://www.youtube.com/embed/${videoUrl}" width="640" height="360" frameborder="0" allowfullscreen></iframe>`;
+                $('.video-container').html(embedLink);
+                $('.embed-link').hide();
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="video-container">
@@ -45,84 +57,6 @@
             Your browser does not support the video tag.
         </video>
     </div>
-    <a href="#" class="embed-link" onclick="generateEmbedLink()">Generate Embed Link</a>
-    <textarea id="embedCode" style="display: none;"></textarea>
-    <script>
-        function generateEmbedLink() {
-            const videoUrl = 'video/Video.mp4';
-            const embedCode = `<video src="${videoUrl}" controls></video>`;
-            const embedTextArea = document.getElementById('embedCode');
-            embedTextArea.value = embedCode;
-            embedTextArea.style.display = 'block';
-            embedTextArea.select();
-            document.execCommand('copy');
-            embedTextArea.style.display = 'none';
-            alert('Embed link copied to clipboard!');
-        }
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Video Embed</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(to right, #667eea, #764ba2);
-            background-size: cover;
-            font-family: Arial, sans-serif;
-        }
-
-        .video-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-            width: 80%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .video-container video {
-            width: 100%;
-            height: auto;
-        }
-        
-        .embed-link {
-            margin-top: 20px;
-            font-size: 24px;
-            color: #fff;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="video-container">
-        <video controls>
-            <source src="video/Video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <a href="#" class="embed-link" onclick="generateEmbedLink()">Generate Embed Link</a>
-    <textarea id="embedCode" style="display: none;"></textarea>
-    <script>
-        function generateEmbedLink() {
-            const videoUrl = 'video/Video.mp4';
-            const embedCode = `<video src="${videoUrl}" controls></video>`;
-            const embedTextArea = document.getElementById('embedCode');
-            embedTextArea.value = embedCode;
-            embedTextArea.style.display = 'block';
-            embedTextArea.select();
-            document.execCommand('copy');
-            embedTextArea.style.display = 'none';
-            alert('Embed link copied to clipboard!');
-        }
-    </script>
+    <a href="#" class="embed-link">Embed Video</a>
 </body>
 </html>
