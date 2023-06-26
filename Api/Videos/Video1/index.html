@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Discord Widget</title>
+    <title>Video Embed</title>
     <style>
         body {
             display: flex;
@@ -14,24 +14,52 @@
             background-size: cover;
             font-family: Arial, sans-serif;
         }
-        
-        .discord-embed {
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
             width: 80%;
             max-width: 800px;
-            height: 600px;
-            margin-top: 20px;
+            margin: 0 auto;
         }
         
-        .discord-embed iframe {
+        .video-container video {
             width: 100%;
-            height: 100%;
-            border: none;
+            height: auto;
+        }
+        
+        .embed-link {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="discord-embed">
-        <iframe src="https://discord.com/widget" allowtransparency="true" frameborder="0"></iframe>
+    <div class="video-container">
+        <video controls>
+            <source src="video/Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+    <a href="#" class="embed-link" onclick="generateEmbedLink()">Generate Embed Link</a>
+    <input type="text" id="embedCode" style="display: none;">
+    <script>
+        const videoUrl = 'video/Video.mp4';
+        const embedLink = document.getElementById('embedCode');
+        
+        function generateEmbedLink() {
+            const embedCode = `<iframe src="${window.location.href}" width="640" height="360" frameborder="0" allowfullscreen></iframe>`;
+            embedLink.value = embedCode;
+            embedLink.style.display = 'block';
+            embedLink.select();
+            document.execCommand('copy');
+            embedLink.style.display = 'none';
+            alert('Embed link copied to clipboard!');
+        }
+    </script>
 </body>
 </html>
