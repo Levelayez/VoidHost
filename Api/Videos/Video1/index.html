@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play Video</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: auto;
+        }
+        
+        .download-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video controls>
+            <source src="video/Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <a href="video/Video.mp4" class="download-button" download>Download</a>
+    <script>
+        const downloadButton = document.querySelector('.download-button');
+        const videoUrl = 'video/Video.mp4';
+        
+        downloadButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            downloadVideo(videoUrl);
+        });
+        
+        function downloadVideo(url) {
+            const anchorElement = document.createElement('a');
+            anchorElement.href = url;
+            anchorElement.target = '_blank';
+            anchorElement.download = '';
+            anchorElement.click();
+        }
+    </script>
+</body>
