@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Video Player with Discord Embed</title>
+    <title>Discord Widget</title>
     <style>
         body {
             display: flex;
@@ -14,38 +14,11 @@
             background-size: cover;
             font-family: Arial, sans-serif;
         }
-
-        .video-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-            width: 80%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .video-container video {
-            width: 100%;
-            height: auto;
-        }
-        
-        .download-button {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 20px 40px;
-            font-size: 24px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-        }
         
         .discord-embed {
             width: 80%;
             max-width: 800px;
-            height: 300px;
+            height: 600px;
             margin-top: 20px;
         }
         
@@ -57,32 +30,8 @@
     </style>
 </head>
 <body>
-    <div class="video-container">
-        <video controls>
-            <source src="video/Video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <a href="video/Video.mp4" class="download-button" download>Download</a>
     <div class="discord-embed">
         <iframe src="https://discord.com/widget" allowtransparency="true" frameborder="0"></iframe>
     </div>
-    <script>
-        const downloadButton = document.querySelector('.download-button');
-        const videoUrl = 'video/Video.mp4';
-        
-        downloadButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            downloadVideo(videoUrl);
-        });
-        
-        function downloadVideo(url) {
-            const anchorElement = document.createElement('a');
-            anchorElement.href = url;
-            anchorElement.target = '_blank';
-            anchorElement.download = '';
-            anchorElement.click();
-        }
-    </script>
 </body>
 </html>
